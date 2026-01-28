@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function responses(){
         return $this->hasMany(Response::class);
     }
+    public function favorites(){
+        return $this->hasMany(Favorite::class);
+    }
 }
