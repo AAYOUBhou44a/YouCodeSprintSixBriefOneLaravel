@@ -19,17 +19,23 @@
 
     Route::post('/submitLogin', [AuthController::class, 'submitLogin']);
     
-    // redirect marche avec les routes prédéfinié dans web.php
-    Route::get('/questions', function(){
-        return view('questions.index');
-    });
-
-    Route::get('/dashboard', function(){
-        return view('admin.dashboard')->name('dashboard');
-    });
-
     
-    // Route::get('/questions_index', function(){
-    //     return view('questions.index')->name('index');
-    // });
+    // redirect marche avec les routes prédéfinié dans web.php
+
+    Route::middleware(['auth'])->group(function(){
+        // auth Son travail est de poser une seule question à chaque visiteur : « Es-tu authentifié (connecté) ? » 
+        // Le mot group permet d'appliquer cette sécurité à plusieurs routes en même temps. 
+        Route::get('/questions', function(){
+            return view('questions.index');
+        });
+    
+        Route::get('/dashboard', function(){
+            return view('admin.dashboard');
+        })->middleware('can:only-admin')->name('dashboard');
+    
+        Route::get('/logout', [AuthController::class, 'logout']);
+        // Route::get('/questions_index', function(){
+        //     return view('questions.index')->name('index');
+        // });
+    });
     

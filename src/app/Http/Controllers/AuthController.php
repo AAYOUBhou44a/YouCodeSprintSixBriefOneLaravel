@@ -52,9 +52,9 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        // Détruire la session côté serveur
+        // Détruire la session côté serveur , invalidate(): Efface toutes les données de la session actuelle pour que personne ne puisse la voler.
         $request->session()->invalidate();
-        // Régénérer le jeton CSRF pour plus de sécurité
+        // Régénérer le jeton CSRF pour plus de sécurité , Change le jeton CSRF pour que le formulaire de login suivant soit propre.
         $request->session()->regenerateToken();
         
         return redirect('/register');
