@@ -8,8 +8,9 @@
             <p class="text-slate-500 mt-2">Créez votre compte pour aider vos voisins.</p>
         </div>
 
-        <form action="#" method="POST" class="space-y-5">
+        <form action="/submitRegister" method="POST" class="space-y-5">
             @csrf
+            
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Nom complet</label>
                 <input type="text" name="name" required
@@ -22,15 +23,28 @@
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
             </div>
 
-            <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2">Ville / Quartier</label>
-                <input type="text" name="location" placeholder="ex: Paris, Quartier Centre" required
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Ville</label>
+                    <input type="text" name="city" placeholder="ex: Paris" required
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Quartier</label>
+                    <input type="text" name="street" placeholder="ex: Centre" required
+                        class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                </div>
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Mot de passe</label>
                 <input type="password" name="password" required
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Confirmer le mot de passe</label>
+                <input type="password" name="password_confirmation" required
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
             </div>
 
@@ -40,7 +54,7 @@
         </form>
 
         <p class="text-center mt-8 text-sm text-slate-500">
-            Déjà membre ? <a href="#" class="text-indigo-600 font-bold">Se connecter</a>
+            Déjà membre ? <a href="/connexion" class="text-indigo-600 font-bold">Se connecter</a>
         </p>
     </div>
 </div>

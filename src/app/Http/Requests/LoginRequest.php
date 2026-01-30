@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ResgisterRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,17 @@ class ResgisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'requeried',
-            'email' => ['required', 'email']
+            'email' => 'required|email',
+            'password' => 'required|min:6'
         ];
     }
-
-    public function messages(){
-        return[
-            'name.required' => 'erreeer  : nmae is resquired'
+    public function messages(): array 
+    {
+        return [
+            'email.required' => 'Un email ne peut pas etre vid',
+            'email.email' => 'email invalid', 
+            'password.required' => 'Un password ne peut pas etre vid',
+            'password.min' => 'Veuillez entrer un password avec plus que 6 caractères'
         ];
     }
 }

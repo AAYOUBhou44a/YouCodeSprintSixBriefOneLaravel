@@ -8,7 +8,7 @@
             <p class="text-slate-500 mt-2">Heureux de vous revoir !</p>
         </div>
 
-        <form action="#" method="POST" class="space-y-6">
+        <form action="/submitLogin" method="POST" class="space-y-6">
             @csrf
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
