@@ -29,4 +29,9 @@ class QuestionController extends Controller
         // Correction : compact('questions') et non compact($questions)
         // Le mot 'user' dans with('user') fait directement référence au nom de la fonction (la relation) que tu as écrite dans ton modèle Question.php. 
     }
+
+    public function showQuestion($id){
+        $question = Question::with(['user', 'responses.user'])->findOrFail($id);
+        return view('questions.show', compact('question'));
+    }
 }

@@ -1,6 +1,7 @@
 <?php 
 
     use App\Http\Controllers\QuestionController;
+    use App\Http\Controllers\ResponseController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\AuthController;
     // La page d'affichage du formulaire (GET)
@@ -20,15 +21,13 @@
     // il faut ajouter ->name('login')  le middleware auth fait ceci en interne : return redirect()->guest(route('login')); 
     Route::post('/submitLogin', [AuthController::class, 'submitLogin']);
     
-    Route::get('/showQuestion', function(){
-        return view('questions.show');
-    });
     
     // redirect marche avec les routes prédéfinié dans web.php
-
+    
     Route::middleware(['auth'])->group(function(){
         // auth Son travail est de poser une seule question à chaque visiteur : « Es-tu authentifié (connecté) ? » 
         // Le mot group permet d'appliquer cette sécurité à plusieurs routes en même temps. 
+        Route::get('/showQuestion/{id}',[QuestionController::class, 'showQuestion']);
         Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
     
         Route::get('/dashboard', function(){
@@ -42,8 +41,7 @@
         })->name('addQuestion');
 
         Route::post('/submitQuestion', [QuestionController::class, 'submitQuestion']);
-        // Route::get('/questions_index', function(){
-        //     return view('questions.index')->name('index');
-        // });
+
+        Route::post('/submitResponse', [ResponseController::class, 'submitResponse']);
     });
     

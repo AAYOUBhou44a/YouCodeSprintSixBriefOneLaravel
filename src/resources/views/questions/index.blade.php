@@ -74,7 +74,7 @@
                             </svg>
                         </button>
                     </div>
-                    <a href="#" class="text-indigo-600 font-bold hover:underline text-sm">Voir les détails →</a>
+                    <a href="/showQuestion/{{$question->id}}" class="text-indigo-600 font-bold hover:underline text-sm">Voir les détails →</a>
                 </div>
             </div>
 
