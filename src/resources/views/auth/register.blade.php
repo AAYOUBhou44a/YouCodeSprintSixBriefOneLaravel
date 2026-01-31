@@ -13,33 +13,50 @@
             
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Nom complet</label>
-                <input type="text" name="name" required
+                <input type="text" name="name" required value="{{ old('name')}}"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    @error('name')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                    @enderror
             </div>
+            
 
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                <input type="email" name="email" required
+                <input type="email" name="email" required value="{{ old('email')}}"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    @error('email')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                    @enderror
             </div>
+
 
             <div class="grid grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Ville</label>
-                    <input type="text" name="city" placeholder="ex: Paris" required
+                    <input type="text" name="city" placeholder="ex: Paris" required value="{{old('city')}}"
                         class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                        @error('city')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Quartier</label>
-                    <input type="text" name="street" placeholder="ex: Centre" required
+                    <input type="text" name="street" placeholder="ex: Centre" required value="{{old('street')}}"
                         class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                        @error('street')
+                            <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                        @enderror
                 </div>
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Mot de passe</label>
-                <input type="password" name="password" required
+                <input type="password" name="password" required value="{{old('password')}}"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    @error('password')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                    @enderror
             </div>
 
             <div>

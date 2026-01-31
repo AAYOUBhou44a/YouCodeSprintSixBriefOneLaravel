@@ -24,7 +24,7 @@ class AuthController extends Controller
         ]);
         
         Auth::login($user);
-        return redirect('/login');
+        return redirect('/questions');
         // return redirect()->route('auth.login')->with('success', 'Bienvenue dans le voisinage');
         // return redirect('/login');
     }
@@ -50,7 +50,7 @@ class AuthController extends Controller
         return back();
     }
 
-    public function logout(){
+    public function logout(Request $request){
         Auth::logout();
         // Détruire la session côté serveur , invalidate(): Efface toutes les données de la session actuelle pour que personne ne puisse la voler.
         $request->session()->invalidate();

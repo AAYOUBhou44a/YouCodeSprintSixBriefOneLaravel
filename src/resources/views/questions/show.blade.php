@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="max-w-5xl mx-auto px-4 py-10">
-    <a href="#" class="inline-flex items-center text-slate-500 hover:text-indigo-600 font-semibold mb-8 transition">
+    <a href="/questions" class="inline-flex items-center text-slate-500 hover:text-indigo-600 font-semibold mb-8 transition">
         <span class="mr-2">←</span> Retour aux questions
     </a>
 
@@ -48,7 +48,10 @@
 
                 <div class="bg-indigo-50 p-6 rounded-3xl border border-indigo-100">
                     <h4 class="font-bold text-indigo-900 mb-4">Apporter votre aide</h4>
-                    <form action="#" method="POST" class="space-y-4">
+
+
+
+                    <form action="addAnswer" method="POST" class="space-y-4">
                         @csrf
                         <textarea rows="3" placeholder="Écrivez votre réponse ici..." 
                             class="w-full px-4 py-3 bg-white border border-indigo-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 outline-none transition"></textarea>
@@ -56,6 +59,9 @@
                             Envoyer la réponse
                         </button>
                     </form>
+
+
+
                 </div>
             </div>
         </div>

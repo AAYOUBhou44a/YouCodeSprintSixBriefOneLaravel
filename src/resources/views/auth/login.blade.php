@@ -12,14 +12,20 @@
             @csrf
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
-                <input type="email" name="email" required
+                <input type="email" name="email" required value="{{ old('email') }}"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    @error('email')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                    @enderror
             </div>
 
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-2">Mot de passe</label>
-                <input type="password" name="password" required
+                <input type="password" name="password" required value="{{old('password')}}"
                     class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                    @error('password')
+                        <span style="color: red; font-size: 12px;">{{ $message }}</span>
+                    @enderror
             </div>
 
             <button type="submit" class="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all">
