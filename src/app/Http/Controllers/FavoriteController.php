@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Favorite;
+use App\Models\Question;
 
 class FavoriteController extends Controller
 {
     public function addFavorite($id){
         // Cherche si l'utilisateur a déjà mis CETTE question en favori
         // Sinon, il crée la ligne.
-        $favorite = Favorite::firstOrCreate([
-            'question_id' => $id,
-            'user_id' => Auth::id()
-        ]);
 
-        if($favorite){
-            return redirect()->route('favorites');
-        }
+        $question = Question::findOrFail($id);
+
+        $favorite = Favorite::where('user_id', Auth::id())->where('question_id', $id)->first();
+
+        $favorite ? $favorite->delete() : Favorite::create([
+            'user_id' => Auth::id(),
+            'question_id' => $id
+        ]);
+        
         return back();
     }
 

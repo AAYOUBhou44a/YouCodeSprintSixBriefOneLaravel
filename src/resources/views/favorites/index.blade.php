@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="px-4 py-2 bg-slate-50 text-slate-600 font-bold rounded-xl hover:bg-indigo-600 hover:text-white transition">
+                <a href="/showQuestion/{{$favorite->question->id}}" class="px-4 py-2 bg-slate-50 text-slate-600 font-bold rounded-xl hover:bg-indigo-600 hover:text-white transition">
                     Voir
                 </a>
             </div>

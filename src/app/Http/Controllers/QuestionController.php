@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\QuestionRequest;
+use App\Models\Response;
 
 class QuestionController extends Controller
 {
@@ -24,8 +25,9 @@ class QuestionController extends Controller
     }
 
     public function getQuestions(){
-        $questions = Question::with('user')->latest()->get();
-        return view('questions.index', compact('questions'));
+        $questions = Question::with(['user', 'responses', 'likes', 'favorites'])->latest()->get();
+        $totalResponses = Response::count();
+        return view('questions.index', compact('questions', 'totalResponses'));
         // Correction : compact('questions') et non compact($questions)
         // Le mot 'user' dans with('user') fait directement référence au nom de la fonction (la relation) que tu as écrite dans ton modèle Question.php. 
     }
@@ -34,4 +36,5 @@ class QuestionController extends Controller
         $question = Question::with(['user', 'responses.user'])->findOrFail($id);
         return view('questions.show', compact('question'));
     }
+    
 }
