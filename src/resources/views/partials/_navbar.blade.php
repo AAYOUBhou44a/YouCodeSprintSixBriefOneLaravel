@@ -2,13 +2,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <a href="/" class="text-2xl font-bold text-indigo-600 italic">Voisinage</a>
+                    <a href="/questions" class="text-2xl font-bold text-indigo-600 italic">Voisinage</a>
                 </div>
 
                 <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                    <a href="#" class="hover:text-indigo-600 transition">Accueil</a>
-                    <a href="#" class="hover:text-indigo-600 transition">Questions</a>
-                    <a href="#" class="hover:text-indigo-600 transition">À proximité</a>
+                    <a href="/questions" class="hover:text-indigo-600 transition">Accueil</a>
+                    <a href="/questions" class="hover:text-indigo-600 transition">Questions</a>
+                    <a href="/questions" class="hover:text-indigo-600 transition">À proximité</a>
                 </nav>
 
                 <div class="flex items-center space-x-4">

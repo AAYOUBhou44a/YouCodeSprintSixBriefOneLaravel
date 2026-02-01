@@ -4,6 +4,7 @@
     use App\Http\Controllers\ResponseController;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\FavoriteController;
     // La page d'affichage du formulaire (GET)
     // Route::get('/', function () {
     //     return view('auth.register');
@@ -43,5 +44,12 @@
         Route::post('/submitQuestion', [QuestionController::class, 'submitQuestion']);
 
         Route::post('/submitResponse', [ResponseController::class, 'submitResponse']);
+
+        Route::get('/addFavorite/{id}', [FavoriteController::class, 'addFavorite']);
+
+        // Route::get('/favorites', function(){
+        //     return view('favorites.index');
+        // })->name('favorites'); cela est fausse car ce code affiche la page sans données donc on aura un error 504 
+        Route::get('/favorites', [FavoriteController::class, 'getFavorites']);
     });
     
