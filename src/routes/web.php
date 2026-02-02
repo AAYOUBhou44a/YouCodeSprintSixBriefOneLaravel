@@ -6,6 +6,7 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\FavoriteController;
     use App\Http\Controllers\LikeController;
+    use App\Http\Controllers\DashboardController;
     // La page d'affichage du formulaire (GET)
     // Route::get('/', function () {
     //     return view('auth.register');
@@ -32,9 +33,8 @@
         Route::get('/showQuestion/{id}',[QuestionController::class, 'showQuestion']);
         Route::get('/questions', [QuestionController::class, 'getQuestions'])->name('questions');
     
-        Route::get('/dashboard', function(){
-            return view('admin.dashboard');
-        })->middleware('can:admin-only')->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('can:admin-only')->name('dashboard');
+        Route::delete('/adminDelete/{id}', [DashboardController::class, 'delete']);
     
         Route::get('/logout', [AuthController::class, 'logout']);
 
@@ -60,5 +60,9 @@
         Route::get('/edit/{id}', [QuestionController::class, 'edit']);
 
         Route::put('/submitUpdates/{id}', [QuestionController::class, 'submitUpdates']);
+        
+        Route::get('/profile', function(){
+            return view('profile.profile');
+        });
     });
     

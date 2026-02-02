@@ -12,12 +12,12 @@
                 </nav>
 
                 <div class="flex items-center space-x-4">
-                    <button class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
+                    <a href="/addQuestion" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
                         + Poser une question
-                    </button>
-                    <div class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm overflow-hidden">
+                    </a>
+                    <a href="/profile" class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm overflow-hidden">
                         <img src="https://ui-avatars.com/api/?name=User" alt="Profil">
-                    </div>
+                    </a>
                     </div>
             </div>
         </div>
