@@ -1,5 +1,7 @@
 <?php 
 
+use App\Http\Controllers\ProfileController;
+
     use App\Http\Controllers\QuestionController;
     use App\Http\Controllers\ResponseController;
     use Illuminate\Support\Facades\Route;
@@ -61,8 +63,6 @@
 
         Route::put('/submitUpdates/{id}', [QuestionController::class, 'submitUpdates']);
         
-        Route::get('/profile', function(){
-            return view('profile.profile');
-        });
+        Route::get('/profile', [ProfileController::class, 'profile']);
     });
     
