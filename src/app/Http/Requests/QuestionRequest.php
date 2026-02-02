@@ -32,7 +32,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'title.required' => 'le titre ne peut pas etre vid',
-            'title.min' => 'le titre doit contenir au moins 3 caractères',
+            'title.min' => 'le titre doit contenir au moins 5 caractères',
             'city.required' => 'le nom de la ville ne peut pas etre vid',
             'city.min' => 'le nom de la ville doit contenir au moins 3 caractères',
             'street.required' => 'le nom du quartier ne peut pas etre vid',

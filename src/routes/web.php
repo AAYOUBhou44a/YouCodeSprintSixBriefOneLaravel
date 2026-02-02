@@ -54,5 +54,11 @@
         Route::get('/favorites', [FavoriteController::class, 'getFavorites'])->name('favorites');
 
         Route::post('/likeQuestion/{id}', [LikeController::class, 'like']);
+
+        Route::delete('/delete/{id}', [QuestionController::class, 'delete']);
+
+        Route::get('/edit/{id}', [QuestionController::class, 'edit']);
+
+        Route::put('/submitUpdates/{id}', [QuestionController::class, 'submitUpdates']);
     });
     

@@ -94,6 +94,11 @@
                                 Supprimer
                             </button>
                         </form>
+                        <form action="/edit/{{$question->id}}" method="GET">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-pencil"></i> Modifier
+                            </button>
+                        </form>
                         @endif
                     </div>
                     <a href="/showQuestion/{{$question->id}}" class="text-indigo-600 font-bold hover:underline text-sm">Voir les détails →</a>

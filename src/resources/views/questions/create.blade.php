@@ -16,13 +16,16 @@
             <p class="text-indigo-100 mt-2">Expliquez votre besoin pour recevoir l'aide de vos voisins.</p>
         </div>
 
-        <form action="/submitQuestion" method="POST" class="p-8 space-y-8">
+        <form action="/{{isset($question) ? 'submitUpdates/'.$question->id : 'submitQuestion'}}" method="POST" class="p-8 space-y-8">
+            <!-- le point de concaténation est nécessaire ici  -->
             @csrf
-
+            @if(isset($question))
+            @method('PUT')
+            @endif
             {{-- Titre --}}
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Titre de votre demande</label>
-                <input type="text" name="title" value="{{old('title')}}" placeholder="Ex: Recherche un jardinier pour dimanche, Problème de fuite..." 
+                <input type="text" name="title" value="{{isset($question) ? $question->title : old('title')}}" placeholder="Ex: Recherche un jardinier pour dimanche, Problème de fuite..." 
                     class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all">
                 <p class="text-xs text-slate-400 mt-2 font-medium italic">Soyez précis pour attirer l'attention.</p>
                 @error('title')
@@ -36,7 +39,7 @@
                     <label class="block text-sm font-bold text-slate-700 mb-2">Ville</label>
                     <div class="relative">
                         <span class="absolute left-4 top-4">🏙️</span>
-                        <input type="text" name="city" value="{{old('city')}}" placeholder="ex: Paris" required 
+                        <input type="text" name="city" value="{{isset($question) ? $question->city : old('city')}}" placeholder="ex: Paris" required 
                             class="w-full pl-12 pr-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all">
                             @error('city')
                                 <span style="color: red; font-size: 12px;">{{ $message }}</span>
@@ -48,7 +51,7 @@
                     <label class="block text-sm font-bold text-slate-700 mb-2">Quartier</label>
                     <div class="relative">
                         <span class="absolute left-4 top-4">📍</span>
-                        <input type="text" name="street" value="{{old('street')}}" placeholder="ex: Quartier Centre" required 
+                        <input type="text" name="street" value="{{isset($question) ? $question->street : old('street')}}" placeholder="ex: Quartier Centre" required 
                             class="w-full pl-12 pr-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all">
                             @error('street')
                                 <span style="color: red; font-size: 12px;">{{ $message }}</span>
@@ -67,8 +70,9 @@
             {{-- Détails --}}
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Détails de la question</label>
-                <textarea name="content" rows="6" value="{{old('content')}}" placeholder="Décrivez votre situation en quelques lignes..." 
-                    class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all"></textarea>
+                <textarea name="content" rows="6" placeholder="Décrivez votre situation en quelques lignes..." 
+                    class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:bg-white outline-none transition-all">{{isset($question) ? $question->content : old('content') }}
+                </textarea>
                     @error('content')
                         <span style="color: red; font-size: 12px;">{{ $message }}</span>
                     @enderror

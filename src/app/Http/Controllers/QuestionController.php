@@ -37,4 +37,33 @@ class QuestionController extends Controller
         return view('questions.show', compact('question'));
     }
     
+    public function delete($id){
+        $question = Question::where('user_id', Auth::id())->where('id', $id);
+        if($question){
+            $question->delete();
+            return back();
+        }
+        return back();
+    }
+    
+    public function edit($id){
+        $question = Question::findOrFail($id);
+        return view('questions.create', compact('question'));
+    }
+
+    public function submitUpdates(QuestionRequest $request, $id){
+        $question = Question::findOrFail($id);
+        if(!$question){
+            return back();
+        }
+        $updated = $question->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'city' => $request->city,
+            'street' => $request->street,
+            'user_id' => Auth::id()
+        ]);
+
+        return $updated ? redirect()->route('questions') : back();
+    }
 }
