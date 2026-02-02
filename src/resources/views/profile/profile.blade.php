@@ -12,9 +12,9 @@
                         {{Str::upper(Str::substr($user->name, 0, 1))}}
                     </div>
                 </div>
-                <button class="px-6 py-3 bg-white text-slate-700 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-indigo-200 transition-all shadow-sm">
+                <!-- <button class="px-6 py-3 bg-white text-slate-700 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 hover:border-indigo-200 transition-all shadow-sm">
                     Modifier le profil
-                </button>
+                </button> -->
             </div>
             
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">

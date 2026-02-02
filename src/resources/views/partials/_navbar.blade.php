@@ -6,7 +6,7 @@
                 </div>
 
                 <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                    @if(Auth::user()->role === 'admin')
+                    @if(Auth::check() && Auth::user()->role === 'admin')
                     <a href="/dashboard" class="hover:text-indigo-600 transition">Dashboard</a>
                     @endif
                     <a href="/questions" class="hover:text-indigo-600 transition">Accueil</a>
