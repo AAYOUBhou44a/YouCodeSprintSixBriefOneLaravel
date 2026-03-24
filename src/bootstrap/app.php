@@ -7,15 +7,17 @@ use Illuminate\Foundation\Configuration\Middleware;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Ajoute cette ligne pour désactiver la vérification CSRF sur cette route
-        $middleware->validateCsrfTokens(except: [
-            '*', 
-        ]);
-    })
+    $middleware->statefulApi(); // INDISPENSABLE pour Vue + Sanctum
+    
+    $middleware->validateCsrfTokens(except: [
+        'api/*', 
+    ]);
+})
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
@@ -28,6 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
 // return Application::configure(basePath: dirname(__DIR__))
 //     ->withRouting(
 //         web: __DIR__.'/../routes/web.php',
+        api: __DIR__.'/../routes/api.php';
 //         commands: __DIR__.'/../routes/console.php',
 //         health: '/up',
 //     )

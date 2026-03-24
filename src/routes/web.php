@@ -14,6 +14,10 @@ use App\Http\Controllers\ProfileController;
     //     return view('auth.register');
     // });
 
+    Route::get('/test', function(){
+        return view('test');
+    });
+
     Route::get('/', function(){
         return view('auth.register');
     });
@@ -64,5 +68,9 @@ use App\Http\Controllers\ProfileController;
         Route::put('/submitUpdates/{id}', [QuestionController::class, 'submitUpdates']);
         
         Route::get('/profile', [ProfileController::class, 'profile']);
+
+        // Route::get('/test', function(){
+        //     return view('test');
+        // })->middleware('can:me_only');
     });
     

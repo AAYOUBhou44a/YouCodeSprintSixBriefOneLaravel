@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
+use Doctrine\Inflector\Rules\English\Rules;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,23 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin-only', function (User $user){
             return $user->role === 'admin';
         });
+
+
+
+
+
+
+
+
+
+
+        // Gate::define('me_only', function(User $user){
+        //     if($user->role === 'admin'){
+        //         echo 'admin';
+        //     }else{
+        //         echo 'user';
+        //     }
+        // });
     }
 }
+
